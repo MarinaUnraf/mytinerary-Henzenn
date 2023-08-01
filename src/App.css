@@ -1,16 +1,19 @@
-
-header{
-  display: flex;
-  width: 1291px;
-  justify-content: space-between;
-  align-items: center;
-  
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-
-nav{
+#root{
   display: flex;
+  position: relative;
+  width: 100%;
+  padding: 32px 218px 399px 219px;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
-  gap: 32px;
+  gap: 318px;
+  background: #EBEBEB;
 }
+
+
 
