@@ -1,0 +1,21 @@
+.buttonNav{
+    display: flex;
+    padding: 15px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+
+    border-radius: 9px;
+    background: var(--prima, purple);
+
+    color: #FFF;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 699;
+    line-height: normal;
+    text-decoration: none;
+    
+}
+.buttonNav:hover{
+    color: #FFF;
+}

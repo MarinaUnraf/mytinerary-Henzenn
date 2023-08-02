@@ -6,7 +6,7 @@
 }
 .heroParagraph{
     display: flex;
-    width: 60%;
+    width: 40%;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
