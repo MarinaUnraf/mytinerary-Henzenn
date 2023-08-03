@@ -13,8 +13,9 @@ export default function Nav() {
   return (
     <>
      <nav className='navBar'>
+            {/* the Key value is to generate an array index to iterate in the map function */}
             {
-            data.map((each)=> (<Anchor href={each.href} content={each.content} />))}
+            data.map((each, index )=> (<Anchor key={index} href={each.href} content={each.content} />))}
       <Button />
             
       </nav>
