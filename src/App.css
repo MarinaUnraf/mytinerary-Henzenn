@@ -6,12 +6,12 @@
 }
 #root{
   display: flex;
-  width: 100%;
-  padding: 64px 225px 200px 250px;
+  min-height: 100vh;
+  padding: 64px 0px 0px 0px;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap:10rem;
+  gap:2rem;
   background: #EBEBEB;
 }
 
