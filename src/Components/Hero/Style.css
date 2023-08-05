@@ -1,16 +1,1 @@
 
-.btn-primary{
-    color: white;
-    background-color: purple;
-    border-style: none;
-    
-}
-.btn-primary:hover{
-    color: white;
-    background-color: rgb(85, 2, 85);
-   
-}
-.heroCustom{
-    padding: 60px 225px 200px 250px;
-
-}
