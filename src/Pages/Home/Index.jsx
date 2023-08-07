@@ -1,5 +1,7 @@
 
 
+
+import CarouselCustom from '../../Components/Carrousel/Carousel'
 import HeroOne from '../../Components/Hero/HeroOne'
 
 
@@ -8,7 +10,7 @@ export default function Index() {
     <>
      
        <HeroOne />
-       
+       <CarouselCustom />
        
     </>
   )

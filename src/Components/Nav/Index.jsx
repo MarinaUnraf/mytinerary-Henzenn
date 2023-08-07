@@ -1,5 +1,5 @@
 import Anchor from '../Anchor/Anchor'
-import Button from '../Button/Button'
+
 import './Style.css'
 
 export default function Nav() {
@@ -16,7 +16,7 @@ export default function Nav() {
             {/* the Key value is to generate an array index to iterate in the map function */}
             {
             data.map((each, index )=> (<Anchor key={index} href={each.href} content={each.content} />))}
-      <Button />
+      
             
       </nav>
     </>

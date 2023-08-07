@@ -8,7 +8,7 @@ function HeroOne() {
 
   return (
    <>
-         <div className="container my-20 px-4 pt-10  mx-auto  flex justify-center content-center">
+         <div className="container mt-20 px-4 pt-10  mx-auto  flex justify-center content-center">
             <div className="basis-1/2 space-y-10 ">
               <h1 className=" text-fuchsia-700 mb-16 text-5xl font-black  ">Find the perfect destination</h1>
                 <p className=" text-left ">Our app will help you find the perfect path for your next trip. With an easy-to-use interface and a host of itinerary options, planning your next trip has never been easier.</p>
@@ -19,18 +19,13 @@ function HeroOne() {
             </div>
          </div>
 
-   {/*  <div className="">
-      <div className="col-10 col-sm-8 col-lg-6">
-        <img src="/image-alt.svg" className="d-block mx-lg-auto img-fluid style1" width="300" height="200"  />
-       </div>
-      <div className="col-lg-6 gap-40">
-        <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3">Find the perfect destination</h1>
-        <p className="lead gap-40">Our app will help you find the perfect path for your next trip. With an easy-to-use interface and a host of itinerary options, planning your next trip has never been easier.</p>
-        <div className="d-grid gap-40 d-md-flex justify-content-md-start">
-        <button type="button" className="btn btn-primary btn-lg px-4">View More</button>
-        </div>
-      </div>
-    </div> */}
+          <div className="container my-2  pt-6  mx-auto  flex content-center justify-center ">
+                <div className="relative shadow-md font-bold my-5 py-5 px-10 text-white cursor-pointer bg-fuchsia-600 hover:bg-fuchsia-500 rounded-full text-xl text-center w-auto ">
+            <span className="absolute h-6 w-6 right-0 top-0 animate-ping inline-flex rounded-full h-6 w-6 bg-fuchsia-400">
+            </span>
+            Go to Cities!
+          </div>
+          </div>
    </> 
   
   )
