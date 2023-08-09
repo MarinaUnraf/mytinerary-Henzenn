@@ -5,8 +5,8 @@ import './Style.css'
 export default function Nav() {
   //asigning an object to the nav function
   let data = [
-              {href:'#', content: 'Home'},
-              {href:'#', content: 'Cities'},
+              {href:'/', content: 'Home'},
+              {href:'/Cities', content: 'Cities'},
               
   ]
   
