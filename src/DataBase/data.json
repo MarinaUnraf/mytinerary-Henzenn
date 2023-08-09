@@ -3,84 +3,84 @@
       "id": 1,
       "ciudad": "New York",
       "pais": "United States",
-      "imagen": "/new-york.png",
+      "imagen": "/new-york.jpg",
       "url": "https://example.com/new-york"
     },
     {
       "id": 2,
       "ciudad": "London",
       "pais": "United Kingdom",
-      "imagen": "/london.png",
+      "imagen": "/london.jpg",
       "url": "https://example.com/london"
     },
     {
       "id": 3,
       "ciudad": "Paris",
       "pais": "France",
-      "imagen": "/paris.png",
+      "imagen": "/paris.jpg",
       "url": "https://example.com/paris"
     },
     {
       "id": 4,
       "ciudad": "Tokyo",
       "pais": "Japan",
-      "imagen": "/tokyo.png",
+      "imagen": "/tokyo.jpg",
       "url": "https://example.com/tokyo"
     },
     {
       "id": 5,
       "ciudad": "Sydney",
       "pais": "Australia",
-      "imagen": "/sydney.png",
+      "imagen": "/sydney.jpg",
       "url": "https://example.com/sydney"
     },
     {
       "id": 6,
       "ciudad": "Rome",
       "pais": "Italy",
-      "imagen": "/rome.png",
+      "imagen": "/rome.jpg",
       "url": "https://example.com/rome"
     },
     {
       "id": 7,
       "ciudad": "Cairo",
       "pais": "Egypt",
-      "imagen": "/cairo.png",
+      "imagen": "/cairo.jpg",
       "url": "https://example.com/cairo"
     },
     {
       "id": 8,
       "ciudad": "Rio de Janeiro",
       "pais": "Brazil",
-      "imagen": "/rio.png",
+      "imagen": "/rio.jpg",
       "url": "https://example.com/rio"
     },
     {
       "id": 9,
       "ciudad": "Beijing",
       "pais": "China",
-      "imagen": "/beijing.png",
+      "imagen": "/beijing.jpg",
       "url": "https://example.com/beijing"
     },
     {
       "id": 10,
       "ciudad": "Moscow",
       "pais": "Russia",
-      "imagen": "/moscow.png",
+      "imagen": "/moscow.jpg",
       "url": "https://example.com/moscow"
     },
     {
       "id": 11,
       "ciudad": "Toronto",
       "pais": "Canada",
-      "imagen": "/toronto.png",
+      "imagen": "/toronto.jpg",
       "url": "https://example.com/toronto"
     },
     {
       "id": 12,
       "ciudad": "Mumbai",
       "pais": "India",
-      "imagen": "/mumbai.png",
+      "imagen": "/mumbai.jpg",
       "url": "https://example.com/mumbai"
     }
 ]  
