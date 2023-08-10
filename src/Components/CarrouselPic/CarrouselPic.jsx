@@ -1,12 +1,18 @@
 
 
-function CarrouselPic({imagen, ciudad}) {
+function CarrouselPic({ image, currentIndex, imageIndex }) {
+  const isVisible = currentIndex === imageIndex;
+
   return (
-    <div className=" flex flex-col rounded-lg bg-fuchsia-200 p-3 ">
-        <img className="aspect-square drop-shadow-xl " src={imagen} alt="" />
-        <p className="text-center text-base mt-2"> {ciudad} </p>
+    <div
+      className={`transition-opacity duration-500 ${
+        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      }`}
+    >
+      <img src={image} alt={`Image ${imageIndex + 1}`} className="w-full" />
     </div>
-  )
+  );
 }
+
 
 export default CarrouselPic
