@@ -9,7 +9,8 @@ const router = createBrowserRouter([
 
       {path: '/', element: <Layout/>,
         children:[{path: '/', element: <Index/>},
-                  {path: '/cities', element: <Cities/>}
+                  {path: '/cities', element: <Cities/>},
+                  {path: '/cities/:id', element: <Cities/>}
       ]
     }
 ])
