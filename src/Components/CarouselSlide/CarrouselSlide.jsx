@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import CarrouselPic from '../CarrouselPic/CarrouselPic'
+
 import {HiChevronLeft,HiChevronRight } from "react-icons/hi"
 
 
