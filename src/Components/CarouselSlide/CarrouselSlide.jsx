@@ -17,15 +17,24 @@ const ImageCarousel = () => {
   }
 
   return (
-    <div className="relative  flex flex-row">
-      <button className="absolute left-0 top-1/2 " onClick={handleBack}>
-       <HiChevronLeft/>
-      </button>
-     
-      <button className="absolute right-0 top-1/2 " onClick={handleNext}>
-        <HiChevronRight />
-      </button>
-    </div>
+          <>
+          <div className="overflow-hidden relative">
+              <div className='flex'>
+
+                
+              </div>
+            <div className="relative  flex flex-row justify-between mx-auto">
+              <button   className="top-1/2 text-fuchsia-700" onClick={handleBack}>
+              <HiChevronLeft size ={70}/>
+              </button>
+            
+              <button className="top-1/2  text-fuchsia-700" onClick={handleNext}>
+                <HiChevronRight size ={70} />
+              </button>
+            </div>
+        </div>
+          </>
+
   );
 };
 
