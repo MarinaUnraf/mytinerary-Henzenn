@@ -1,6 +1,5 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link as Backlink } from "react-router-dom"
 import  data from '../../DataBase/data.json'
-
 
 function CityDetail() {
     
@@ -22,8 +21,10 @@ function CityDetail() {
                           <img  className="aspect-square w-1/2 rounded-2xl" src={citySelected.imagen} alt="" />
                           <h2 className="font-bold text-fuchsia-700">{citySelected.ciudad} </h2>
                           <p>{citySelected.pais}</p>
+                          <Backlink to={'/cities'}>
                           <button className="bg-fuchsia-600 hover:bg-fuchsia-400 text-white font-bold py-2 px-4 border-b-4 border-fuchsia-700 hover:border-fuchsia-600 rounded my-2" href=""> Back to Cities</button>
-                          
+
+                          </Backlink>
                   </div>
 
           <div className="py-8 px-4 mx-auto  text-center lg:py-16 lg:px-12">
