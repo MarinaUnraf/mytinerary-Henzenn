@@ -6,7 +6,7 @@
     gap: 9px;
 
     border-radius: 9px;
-    background: var(--prima, purple);
+    background: var(--prima, rgb(201, 10, 201));
 
     color: #FFF;
     font-size: 23px;

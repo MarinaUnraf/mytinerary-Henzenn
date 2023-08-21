@@ -1,14 +1,10 @@
 import { useParams, Link as Backlink } from "react-router-dom"
-import  data from '../../DataBase/data.json'
 
-function CityDetail() {
+
+function CityDetail({city,urlimage,country, _id}) {
     
-  console.log(data);
+ 
 
-  let {id} = useParams()
-  console.log(id);
-  let citySelected = data.find(city => city.id == id)
-  console.log(citySelected);
   
  
 
@@ -18,9 +14,9 @@ function CityDetail() {
     <>
         <div className="   px-4   mx-auto  flex  flex-col justify-end">
                   <div className="flex flex-col mx-auto  mt-28 space-y-2 items-center ">
-                          <img  className="aspect-square w-1/2 rounded-2xl" src={citySelected.imagen} alt="" />
-                          <h2 className="font-bold text-fuchsia-700">{citySelected.ciudad} </h2>
-                          <p>{citySelected.pais}</p>
+                          <img  className="aspect-square w-1/2 rounded-2xl" src={urlimage} alt="" />
+                          <h2 className="font-bold text-fuchsia-700">{city} </h2>
+                          <p>{country}</p>
                           <Backlink to={'/cities'}>
                           <button className="bg-fuchsia-600 hover:bg-fuchsia-400 text-white font-bold py-2 px-4 border-b-4 border-fuchsia-700 hover:border-fuchsia-600 rounded my-2" href=""> Back to Cities</button>
 
