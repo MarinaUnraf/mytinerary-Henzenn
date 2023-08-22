@@ -31,7 +31,7 @@ function Cities() {
         query+= "name="+ search;
       } 
       getAllCities(query).then(setList)
-    }
+    } 
 
   
   return (
@@ -62,12 +62,17 @@ function Cities() {
         <div className="grid grid-cols-5 ">
         
         {console.log(list)}
+          {
+            list.length>0 ?(
+            list.map((item) => (       
+              
+                          <CityCard key={item._id} city={item.name} country={item.country} urlimage={item.urlimage} cityId={item._id}  />
+                          
+            ))
+            ):
+            (<h2> No results found, please try again</h2>)
 
-        {list.map((item) => (       
-          
-                      <CityCard key={item._id} city={item.name} country={item.country} urlimage={item.urlimage} cityId={item._id}  />
-                      
-        ))}
+          } 
        
         
         </div>
