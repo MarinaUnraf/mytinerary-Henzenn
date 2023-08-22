@@ -11,6 +11,6 @@ export const getAllCities = async (queryParams ="") =>{
                 return response.data
                 
             } catch (error) {
-                return []
+                return console.log(error);
             }
 }

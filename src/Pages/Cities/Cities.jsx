@@ -60,10 +60,12 @@ function Cities() {
         <div className="flex mx-auto ">
 
         <div className="grid grid-cols-5 ">
+        
+        {console.log(list)}
 
         {list.map((item) => (       
           
-                      <CityCard key={item._id} city={item.name} country={item.country} urlimage={item.urlimage} _id={item.id}/>
+                      <CityCard key={item._id} city={item.name} country={item.country} urlimage={item.urlimage} cityId={item._id}  />
                       
         ))}
        
