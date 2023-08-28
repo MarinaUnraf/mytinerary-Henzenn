@@ -12,13 +12,19 @@ export default function Nav() {
   
   return (
     <>
-     <nav className='navBar'>
-            {/* the Key value is to generate an array index to iterate in the map function */}
-            {
-            data.map((each, index )=> (<Anchor key={index} href={each.href} content={each.content} />))}
-      
-            
-      </nav>
+      <div>
+           
+            <nav className=' justify-center hidden font-bold md:block space-x-2 text-2xl text-white '>
+                    {/* the Key value is to generate an array index to iterate in the map function */}
+
+
+                    { data.map((each, index )=> (<Anchor key={index} href={each.href} content={each.content} />))}
+                    
+              
+                    
+              </nav> 
+        
+      </div>
     </>
   )
 }
