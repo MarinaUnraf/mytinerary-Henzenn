@@ -1,4 +1,5 @@
 
+import HamburgerMenu from '../HamburguerMenu/HamburguerMenu'
 import Nav from '../Nav/Index'
 import './Style.css'
 
@@ -12,7 +13,9 @@ export default function Footer() {
               </p>
       
 
-            <div className="flex text-white pr-48">
+            <div className="flex text-white pr-48 space-x-2 ">
+             
+             <HamburgerMenu/>
               <Nav /> 
     
             </div>
