@@ -15,7 +15,7 @@ function CityCard({city, country, urlimage, cityId}) {
                 <p className="mb-3">{country}</p>
                  <div className="flex justify-end mr-5 pt-2">
                     <Link to={'/cities/detail/'+ cityId}>
-                     <button className="bg-fuchsia-600 hover:bg-fuchsia-400 text-white font-bold py-2 px-4 border-b-4 border-fuchsia-700 hover:border-fuchsia-600 rounded my-2" href=""> View Details</button>
+                     <button className="bg-fuchsia-600 hover:bg-fuchsia-400 text-white font-bold py-2 px-4 border-b-4 border-fuchsia-700 hover:border-fuchsia-600 rounded my-2" > View Details</button>
                     </Link>
                 </div>
             </div>

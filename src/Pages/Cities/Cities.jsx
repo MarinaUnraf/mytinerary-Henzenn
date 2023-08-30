@@ -1,22 +1,33 @@
 
-import { useState,useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import CityCard from '../../Components/CityCard/CityCard';
 
-import { getAllCities } from "../../Services/cityServices";
+/* import { getAllCities } from "../../Services/cityServices"; */
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import citiesActions from '../../Redux/actions/cities';
+
 
 
 function Cities() {
 
    
 
-     const [list, setList] = useState([])
+     
       const inputSearch = useRef(null)
- 
-   
-    useEffect(()=>{
+    
+     let citiesInStore =useSelector(store => store.citiesReducer.cities)
+     console.log(citiesInStore);
 
-      getAllCities()
-      .then(setList)
+    const dispatch= useDispatch()
+    
+    useEffect(()=>{
+        axios.get("http://localhost:3000/api/cities")
+          .then((response) => {
+            dispatch(citiesActions.get_cities(response.data))
+          })
+
+     
       
      
       
@@ -30,7 +41,14 @@ function Cities() {
       if (search){
         query+= "name="+ search;
       } 
-      getAllCities(query).then(setList)
+      axios.get("http://localhost:3000/api/cities"+query)
+      .then((queryResponse)=>{
+          console.log("queryResponse",queryResponse);
+
+
+          dispatch(citiesActions.get_cities(queryResponse.data))
+      })
+      
     } 
 
   
@@ -61,10 +79,10 @@ function Cities() {
 
         <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2  shrink-0 gap-3">
         
-        {console.log(list)}
+        {console.log(citiesInStore)}
           {
-            list.length>0 ?(
-            list.map((item) => (       
+            citiesInStore.length>0 ?(
+            citiesInStore.map((item) => (       
               
                           <CityCard key={item._id} city={item.name} country={item.country} urlimage={item.urlimage} cityId={item._id}  />
                           
