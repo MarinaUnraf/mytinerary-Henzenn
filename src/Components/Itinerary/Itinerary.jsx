@@ -1,5 +1,5 @@
-import { HiHashtag, HiOutlineClock, HiOutlineHeart} from "react-icons/hi";
-import { CiMoneyBill} from "react-icons/ci";
+import { HiOutlineClock, HiOutlineHeart} from "react-icons/hi";
+import { PiMoneyFill, PiMoneyLight} from "react-icons/pi";
 import Accordion from "../Acordion/Acordion";
 
 const Itinerary = ({ itinerary }) => {
@@ -13,9 +13,9 @@ const Itinerary = ({ itinerary }) => {
             
             <div className="flex flex-row items-center justify-center pt-5 gap-16 shadow-inner">
                 <div className="flex  flex-col items-center space-y-2">
-                        <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" className="rounded-full h-12 w-12" alt=""/>
+                        <img src= {itinerary.userImage} className="rounded-full h-12 w-12" alt=""/>
                         <div className="flex  flex-wrap space-y-2 text-sm text-gray-600  ">
-                            <span>Leonard Krashner</span>  
+                            <span> {itinerary.userName} </span>  
                         </div>
                     
                 </div>
@@ -23,24 +23,29 @@ const Itinerary = ({ itinerary }) => {
                     <span className="rounded-full h-12 w-12 text-5xl text-fuchsia-500" > <HiOutlineHeart /></span>
                         
                         <div className="flex flex-col space-y-2 text-sm text-gray-600  ">
-                            <span>0</span>  
+                            <span> {itinerary.likes} </span>  
                         </div>
                     
                 </div>
                 <div className="flex  flex-col items-center space-y-2">
                         <span className="rounded-full h-12 w-12 text-5xl text-fuchsia-500" > <HiOutlineClock/></span>
                         <div className="flex flex-col space-y-2 text-sm text-gray-600  ">
-                            <span>Duration</span>  
+                            <span> {itinerary.duration + " hs"} </span>  
                         </div>
                     
                 </div>
                 <div className="flex  flex-col items-center space-y-2">
                         
-                        <div className="flex  flex-row items-start  ">
-                        <span className="rounded-full h-12 w-12 text-5xl text-fuchsia-500" > <CiMoneyBill/></span>
-                        <span className="rounded-full h-12 w-12 text-5xl text-fuchsia-500" ><CiMoneyBill/> </span>
-                        <span className="rounded-full h-12 w-12 text-5xl text-fuchsia-500" > <CiMoneyBill/></span>     
-                            
+                        <div className="flex flew-row ">
+
+                            {
+                                    [... new Array(3)].map((money, index)=>{
+                                        return index< itinerary.price ?   <span className="rounded-full h-12 w-12 text-5xl justify-between text-fuchsia-500" > <PiMoneyFill/></span> :  <span className="rounded-full h-12 w-12 text-5xl text-fuchsia-500" > <PiMoneyLight/></span>
+
+                                    })
+
+                            }
+    
                         </div>
                         <div className="flex flex-col space-y-2 text-sm text-gray-600  ">
                             <span>Price</span>  
@@ -50,10 +55,13 @@ const Itinerary = ({ itinerary }) => {
                 
                  <div className="flex  flex-col items-center space-y-2">
                         
-                        <div className="flex  flex-row flex-wrap items-start  ">
-                        <span className="rounded-full h-12 w-12 text-5xl text-fuchsia-500" > <HiHashtag/></span>
-                        <span className="rounded-full h-12 w-12 text-5xl text-fuchsia-500" > <HiHashtag/></span>
-                        <span className="rounded-full h-12 w-12 text-5xl text-fuchsia-500" > <HiHashtag/></span>     
+                        <div className="flex  flex-row flex-wrap items-start  gap-3 ">
+
+                            { itinerary.hashtags.map((hash,index)=>{
+                            return <span key={index} className="rounded-full  p-2 text-xs text-white bg-fuchsia-400"> {hash} </span>
+                        
+                        })}
+                        
                             
                         </div>
                         <div className="flex flex-col space-y-2 text-sm text-gray-600  ">

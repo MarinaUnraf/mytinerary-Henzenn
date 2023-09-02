@@ -25,8 +25,14 @@ function CityDetail() {
   const itineraries = [
     {
       name: "Trip to Paris",
+      userName: "Lena Devon",
+      userImage:"https://flowbite.com/docs/images/people/profile-picture-1.jpg",
       description: "Explore the beautiful city of Paris.",
       activities: ["Visit Eiffel Tower", "Louvre Museum", "Seine River Cruise"],
+      duration: 4,
+      likes: 0,
+      price: 2,
+      hashtags: ["#paris","#french","#croisant"]
     },
   ];
 
@@ -52,7 +58,7 @@ function CityDetail() {
           <Backlink to={"/cities"}>
             <button
               className="bg-fuchsia-600 hover:bg-fuchsia-400 text-white font-bold py-2 px-4 border-b-4 border-fuchsia-700 hover:border-fuchsia-600 rounded my-2 justify-center"
-              href=""
+              
             >
               {" "}
               Back to Cities
@@ -76,7 +82,7 @@ function CityDetail() {
     />
   </svg>
   <h1 className="mb-4 text-4xl font-bold tracking-tight leading-none text-fuchsia-700 lg:mb-6 md:text-5xl xl:text-6xl dark:text-white">
-    Under Maintenance
+    Under Costruction
   </h1>
   <p className="font-light text-gray-500 md:text-lg xl:text-xl dark:text-gray-400">
     Come back later
