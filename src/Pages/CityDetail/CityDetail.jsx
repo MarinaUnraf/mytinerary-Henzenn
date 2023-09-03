@@ -25,25 +25,23 @@ function CityDetail() {
   
   const dispatch = useDispatch()
   const citydispatch = useDispatch()
-  
   useEffect(() => {
-    
-        
     axios("http://localhost:3000/api/city/" + id)
-    .then((response) => {
-      
-      citydispatch(citiesActions.get_city(response.data.city))
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
-    dispatch(itinerariesActions.get_itineraries(id))
-    return ()=> (itinerariesActions.reset_itineraries())
-    
+      .then((response) => {
+        citydispatch(citiesActions.get_city(response.data.city))
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  
+    dispatch(itinerariesActions.get_itineraries(id));
+  
+    // Return a cleanup function to reset itineraries when unmounting
+    return () => {
+      dispatch(itinerariesActions.reset_itineraries());
+    };
   }, []);
-
-
+  
   return (
     <>
       <div className=" px-4   mx-auto  flex  flex-col justify-end">
