@@ -12,5 +12,15 @@ const get_cities = createAction('get_cities', (array)=>{
             }
 
 })
-const citiesActions = { get_cities}
+
+const get_city = createAction('get_city', (array)=>{
+            return {
+                payload: {
+                    city: array
+                }
+            }
+
+})
+
+const citiesActions = { get_cities, get_city}
 export default citiesActions

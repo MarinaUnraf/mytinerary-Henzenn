@@ -17,7 +17,7 @@ function Cities() {
       const inputSearch = useRef(null)
     
      let citiesInStore =useSelector(store => store.citiesReducer.cities)
-     console.log(citiesInStore);
+     //console.log(citiesInStore);
 
     const dispatch= useDispatch()
     
@@ -82,9 +82,9 @@ function Cities() {
         {console.log(citiesInStore)}
           {
             citiesInStore.length>0 ?(
-            citiesInStore.map((item) => (       
+            citiesInStore.map((item, index) => (       
               
-                          <CityCard key={item._id} city={item.name} country={item.country} urlimage={item.urlimage} cityId={item._id}  />
+                          <CityCard key={index} city={item.name} country={item.country} urlimage={item.urlimage} cityId={item._id}  />
                           
             ))
             ):
