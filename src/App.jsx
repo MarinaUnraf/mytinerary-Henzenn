@@ -6,6 +6,7 @@ import Layout from './Layouts/Layout'
 
 import './App.css'
 import SignIn from './Pages/SignIn/SignIn'
+import SignUp from './Pages/SignUp/SignUp'
 
 const router = createBrowserRouter([
 
@@ -13,7 +14,8 @@ const router = createBrowserRouter([
         children:[{path: '/', element: <Index/>},
                   {path: '/cities', element: <Cities/>},
                   {path: '/cities/detail/:id', element: <CityDetail/>},
-                  {path: '/signIn', element: <SignIn/>}
+                  {path: '/signIn', element: <SignIn/>},
+                  {path: '/signUp', element: <SignUp/>}
       ]
     }
 ])

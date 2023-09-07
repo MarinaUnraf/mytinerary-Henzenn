@@ -14,7 +14,7 @@ function SignIn() {
           <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
         </div>
         <div className="flex md:w-1/2 justify-center py-10 items-center bg-white rounded-e-2xl max-md:rounded-2xl ">
-          <form className="bg-white">
+          <form  action="submit" className="bg-white">
             <h1 className="text-gray-800 font-bold text-2xl mb-1">
               Hello Again!
             </h1>
@@ -40,7 +40,7 @@ function SignIn() {
               <input
                 className="pl-2 outline-none border-none"
                 type="text"
-                name=""
+                name="email"
                 id=""
                 placeholder="Email Address"
               />
@@ -61,7 +61,7 @@ function SignIn() {
               <input
                 className="pl-2 outline-none border-none"
                 type="password"
-                name=""
+                name="password"
                 id=""
                 placeholder="Password"
               />
@@ -118,9 +118,12 @@ function SignIn() {
 
             <br></br>
             <span className="text-sm ml-2">Don´t have an account?, </span>
+            <a href="/SignUp">
+
             <span className="text-sm  font-semibold hover:text-fuchsia-600 cursor-pointer">
               Register yourself here!
             </span>
+            </a>
           </form>
         </div>
       </div>

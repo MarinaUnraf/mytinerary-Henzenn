@@ -2,6 +2,8 @@ import Nav from '../Nav/Index'
 import Button from '../Button/Button'
 import './Style.css'
 import HamburgerMenu from '../HamburguerMenu/HamburguerMenu'
+import SignOutButton from '../LogInOutButton/LogInOutButton'
+
 
 export default function Header() {
   return (
@@ -12,7 +14,9 @@ export default function Header() {
           <HamburgerMenu/> 
            <Nav /> 
            <div className='justify-center hidden md:block' >
-          <Button/>
+            
+         {/*  <Button/> */}
+          <SignOutButton/>
 
            </div>
         
