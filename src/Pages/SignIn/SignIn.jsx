@@ -1,35 +1,52 @@
-import axios from "axios";
+//import axios from "axios";
 import { useRef } from "react";
+import { useDispatch} from "react-redux";
+import userActions from "../../Redux/actions/users";
 
 function SignIn() {
-
+    const dispatch = useDispatch()
+ 
   
 
     const emailInputRef = useRef();
     const passInputRef = useRef();
 
-    const handlerSignIn = (event) => {
+    const handlerSignIn = async(event) => {
       /* allways put prevent default to avoid get request type on a post form */
       event.preventDefault();
-  axios
-    .post("http://localhost:3000/api/user/login", {
-      email: emailInputRef.current.value,
-      password: passInputRef.current.value,
-    })
-    .then((response) => {
-      console.log(response.data.token);
-      //localStorage.setItem("token", response.data.token)
-    })
-    .catch((error) => {
-      if (error.response) {
-        // Check if error.response exists
-        console.log(error.response.data.message); // Access error message
-      } else {
-        // Handle other errors (e.g., network errors)
-        console.log("Network error:", error.message);
-      }
-    });
-};
+       const email = emailInputRef.current.value;
+        const password = passInputRef.current.value;
+        dispatch(userActions.sign_in({email, password}))
+       try {
+      await dispatch(userActions.sign_in({ email, password }));
+      // Authentication successful, handle redirection or other actions
+    } catch (error) {
+      // Handle authentication error
+      console.error('Authentication error:', error.message);
+    }
+
+
+
+
+      /* axios
+        .post("http://localhost:3000/api/user/login", {
+          email: emailInputRef.current.value,
+          password: passInputRef.current.value,
+        })
+        .then((response) => {
+          console.log(response.data.token);
+          localStorage.setItem("token", response.data.token);
+        })
+        .catch((error) => {
+          if (error.response) {
+            // Check if error.response exists
+            console.log(error.response.data.message); // Access error message
+          } else {
+            // Handle other errors (e.g., network errors)
+            console.log("Network error:", error.message);
+          }
+        }); */
+    };
 
   
 
@@ -165,6 +182,7 @@ function SignIn() {
           </form>
         </div>
       </div>
+       
     </>
   );
 }

@@ -7,6 +7,9 @@ import Layout from './Layouts/Layout'
 import './App.css'
 import SignIn from './Pages/SignIn/SignIn'
 import SignUp from './Pages/SignUp/SignUp'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import userActions from './Redux/actions/users'
 
 const router = createBrowserRouter([
 
@@ -21,7 +24,19 @@ const router = createBrowserRouter([
 ])
 
 function App() {
+
+  /* dispatch action on redux */
+  const dispatch = useDispatch()
+
+  /* use effect for one time authenticate */
+
+  useEffect(()=>{
+    
+    dispatch(userActions.authenticate());
+
+  },[])
   
+
   return (
       
       <>
