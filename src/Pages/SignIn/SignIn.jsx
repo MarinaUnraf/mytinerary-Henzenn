@@ -1,4 +1,39 @@
+import axios from "axios";
+import { useRef } from "react";
+
 function SignIn() {
+
+  
+
+    const emailInputRef = useRef();
+    const passInputRef = useRef();
+
+    const handlerSignIn = (event) => {
+      /* allways put prevent default to avoid get request type on a post form */
+      event.preventDefault();
+  axios
+    .post("http://localhost:3000/api/user/login", {
+      email: emailInputRef.current.value,
+      password: passInputRef.current.value,
+    })
+    .then((response) => {
+      console.log(response.data.token);
+      //localStorage.setItem("token", response.data.token)
+    })
+    .catch((error) => {
+      if (error.response) {
+        // Check if error.response exists
+        console.log(error.response.data.message); // Access error message
+      } else {
+        // Handle other errors (e.g., network errors)
+        console.log("Network error:", error.message);
+      }
+    });
+};
+
+  
+
+
   return (
     <>
       <div className="container  h-screen md:flex mx-auto">
@@ -14,7 +49,7 @@ function SignIn() {
           <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
         </div>
         <div className="flex md:w-1/2 justify-center py-10 items-center bg-white rounded-e-2xl max-md:rounded-2xl ">
-          <form  action="submit" className="bg-white">
+          <form  className="bg-white">
             <h1 className="text-gray-800 font-bold text-2xl mb-1">
               Hello Again!
             </h1>
@@ -43,6 +78,7 @@ function SignIn() {
                 name="email"
                 id=""
                 placeholder="Email Address"
+                ref={emailInputRef}
               />
             </div>
             <div className="flex items-center border-2 py-2 px-3 rounded-2xl">
@@ -64,11 +100,13 @@ function SignIn() {
                 name="password"
                 id=""
                 placeholder="Password"
+                ref={passInputRef}
               />
             </div>
             <button
-              type="submit"
+              
               className="block w-full bg-fuchsia-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
+              onClick={handlerSignIn}
             >
               Login
             </button>
