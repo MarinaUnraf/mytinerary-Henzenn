@@ -1,36 +1,51 @@
-import { useState } from 'react';
-import countries from '../../DataBase/countries.json'
+import { useState } from "react";
+import countries from "../../DataBase/countries.json";
+import { useDispatch } from "react-redux";
+import userActions from "../../Redux/actions/users";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    country: '',
-    avatar: null, // Use this state to store the selected image file
+    firstName: "",
+    surname: "",
+    email: "",
+    password: "",
+    country: "",
+    urlimage: ""
   });
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    
-    if (name === 'avatar') {
-      // Handle file input for avatar
-      setFormData({ ...formData, avatar: files[0] });
-    } else {
-      // Handle other form inputs
-      setFormData({ ...formData, [name]: value });
-    }
+    const { name, value} = e.target;
+
+    // Handle  form inputs
+    setFormData({ ...formData, [name]: value });
   };
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here, you can send formData to your server or perform validation.
+    const { firstName, surname, email, password, country, urlimage } = formData;
+
+    if (!firstName || !surname || !email || !password || !country) {
+      alert("All fields are mandatory");
+    } else {
+      const body = {
+        firstName: firstName,
+        surname: surname,
+        email: email,
+        urlimage: urlimage, 
+        password: password,
+        country: country,
+      };
+
+      // Dispatch the signUp action with the corrected form data
+      dispatch(userActions.sign_up(body));
+    }
   };
 
   return (
     <>
-      {/* Your existing HTML structure */}
+      {/*  HTML structure */}
       <div className="container h-screen md:flex mx-auto">
         <div className=" rounded-s-2xl relative overflow-hidden md:flex w-1/2 bg-gradient-to-r from-violet-500 to-fuchsia-500  i justify-around items-center hidden">
           <div>
@@ -62,8 +77,8 @@ const SignUp = () => {
               <input
                 className="pl-2 outline-none border-none"
                 type="text"
-                name="lastName"
-                value={formData.lastName}
+                name="surname"
+                value={formData.surname}
                 onChange={handleChange}
                 placeholder="Last Name"
               />
@@ -91,21 +106,20 @@ const SignUp = () => {
               />
             </div>
             {/* Add Country Select */}
-            <div >
-              <select className="flex items-center border-2 py-2 px-3 bg-white  rounded-2xl mb-4 w-full"
+            <div>
+              <select
+                className="flex items-center border-2 py-2 px-3 bg-white  rounded-2xl mb-4 w-full"
                 name="country"
                 value={formData.country}
                 onChange={handleChange}
               >
                 <option value="">Select Country</option>
 
-                {  countries.map((index)=>
-
-                  <option key={index.id} value={index.name}>{index.name} </option>
-
-
-                )}
-               
+                {countries.map((index) => (
+                  <option key={index.id} value={index.name}>
+                    {index.name}{" "}
+                  </option>
+                ))}
               </select>
             </div>
             {/* Add Avatar Input */}
@@ -116,7 +130,8 @@ const SignUp = () => {
                 name="urlimage"
                 value={formData.urlimage}
                 onChange={handleChange}
-                placeholder="Insert an url of your avatar image"/>
+                placeholder="Insert an url of your avatar image"
+              />
             </div>
             {/* Add Submit Button */}
             <button
@@ -126,7 +141,7 @@ const SignUp = () => {
               Sign Up
             </button>
             {/* Your existing Google login button */}
-             <hr className="my-6 border-gray-300 w-full" />
+            <hr className="my-6 border-gray-300 w-full" />
 
             <button
               type="button"
@@ -172,10 +187,9 @@ const SignUp = () => {
             <br></br>
             <span className="text-sm ml-2">Already have an account?, </span>
             <a href="/SignIn">
-            <span className="text-sm  font-semibold hover:text-fuchsia-600 cursor-pointer">
-              Sign In here!
-            </span>
-
+              <span className="text-sm  font-semibold hover:text-fuchsia-600 cursor-pointer">
+                Sign In here!
+              </span>
             </a>
           </form>
         </div>
