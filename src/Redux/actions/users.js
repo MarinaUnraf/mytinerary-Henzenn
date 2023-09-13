@@ -6,26 +6,32 @@ const sign_in = createAsyncThunk("sign_in", async (payload) => {
   try {
     let { email, password } = payload;
 
-    const user = await axios
-      .post("http://localhost:3000/api/user/login", {
-        email: email,
-        password: password,
-      })
-      .then((response) => {
-        localStorage.setItem("token", response.data.token);
-        console.log("succesfully logged in");
-        return response.data.user;
-      })
-      .catch((error) =>
-        error.response.data.message.forEach((message) => console.log(message))
-      );
-    return {
-      user: user,
-    };
-  } catch (e) {
-    console.log(e.message);
+    const response = await axios.post("http://localhost:3000/api/user/login", {
+      email: email,
+      password: password,
+    });
+
+    if (response.data.user) {
+      localStorage.setItem("token", response.data.token);
+      console.log("successfully logged in");
+      return {
+        user: response.data.user,
+      };
+    } else {
+      throw new Error("User not found"); // Throw an error for the error case
+    }
+  } catch (error) {
+    console.log(error.message);
+
+    // Handle the 400 error and return it as part of the rejected action
+    if (error.response && error.response.status === 400) {
+      throw new Error("Invalid input. Please check your email and password.");
+    }
+
+    throw error; // Rethrow the error for error handling in your component
   }
 });
+
 
 
 const authenticate = createAsyncThunk('authenticate', async ()=>{

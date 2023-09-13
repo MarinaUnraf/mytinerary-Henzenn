@@ -1,31 +1,62 @@
 //import axios from "axios";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useDispatch} from "react-redux";
 import userActions from "../../Redux/actions/users";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2"; 
 
 function SignIn() {
+    const [error, setError] = useState("");
     const dispatch = useDispatch()
- 
+    const navigate = useNavigate()
+   
   
-
+    
     const emailInputRef = useRef();
     const passInputRef = useRef();
 
-    const handlerSignIn = async(event) => {
-      /* allways put prevent default to avoid get request type on a post form */
-      event.preventDefault();
-       const email = emailInputRef.current.value;
-        const password = passInputRef.current.value;
-        
-       try {
-      await dispatch(userActions.sign_in({ email, password }));
-        alert('Succesfully logged in')
-      // Authentication successful, handle redirection or other actions
-    } catch (error) {
-      // Handle authentication error
-      console.error('Authentication error:', error.message);
-    }
+  const handlerSignIn = async (event) => {
+  event.preventDefault();
 
+  const email = emailInputRef.current.value;
+  const password = passInputRef.current.value;
+
+  if (!email || !password) {
+    setError("Please enter both email and password.");
+    return;
+  }
+
+ try {
+  const response = await dispatch(userActions.sign_in({ email, password }));
+
+  if (response.payload.user) {
+    // Check if the response contains a user object
+    Swal.fire({
+      title: "Logged In!",
+      text: "You have successfully logged in.",
+      icon: "success",
+      confirmButtonText: "OK",
+    });
+
+    // Redirect to another page or perform other actions as needed
+    navigate("/");
+  } else {
+    // Handle other cases if needed
+  }
+} catch (error) {
+  console.error("Authentication error:", error.message);
+
+  // Display an error alert with the error message
+  Swal.fire({
+    title: "Error!",
+    text: "Wrong email or password, please try again", // Display the error message
+    icon: "error",
+    confirmButtonText: "OK",
+  });
+}
+
+
+};
 
 
 
@@ -47,7 +78,7 @@ function SignIn() {
             console.log("Network error:", error.message);
           }
         }); */
-    };
+    
 
   
 
@@ -67,7 +98,7 @@ function SignIn() {
           <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
         </div>
         <div className="flex md:w-1/2 justify-center py-10 items-center bg-white rounded-e-2xl max-md:rounded-2xl ">
-          <form  className="bg-white">
+          <form className="bg-white">
             <h1 className="text-gray-800 font-bold text-2xl mb-1">
               Hello Again!
             </h1>
@@ -120,16 +151,18 @@ function SignIn() {
                 id=""
                 placeholder="Password"
                 ref={passInputRef}
-                required 
+                required
               />
             </div>
             <button
-              
               className="block w-full bg-fuchsia-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
               onClick={handlerSignIn}
             >
               Login
             </button>
+            {/* Shows an error message if the inputs are empty */}
+            {error && <div className="text-red-500 mt-2">{error}</div>}
+
             {/* Login with google */}
             <hr className="my-6 border-gray-300 w-full" />
 
@@ -177,15 +210,13 @@ function SignIn() {
             <br></br>
             <span className="text-sm ml-2">Don´t have an account?, </span>
             <a href="/SignUp">
-
-            <span className="text-sm  font-semibold hover:text-fuchsia-600 cursor-pointer">
-              Register yourself here!
-            </span>
+              <span className="text-sm  font-semibold hover:text-fuchsia-600 cursor-pointer">
+                Register yourself here!
+              </span>
             </a>
           </form>
         </div>
       </div>
-       
     </>
   );
 }

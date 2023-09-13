@@ -4,13 +4,29 @@ import "./Style.css";
 import HamburgerMenu from "../HamburguerMenu/HamburguerMenu";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import userActions from "../../Redux/actions/users";
 
 export default function Header() {
   const user = useSelector((store) => store.userReducer.user);
+ 
+  const token = localStorage.getItem("token");
   console.log(user);
+  console.log(token);
+
   const dispatch = useDispatch();
+
+    const navigate = useNavigate(); // Get the navigate function
+
+  const handleSignOut = () => {
+    dispatch(userActions.sign_out());
+    
+    navigate('/'); 
+  };
+
+
+
+
   return (
     <>
       <header className=" flex pe-16 ps-16 justify-between w-full  min-[px]:flex-col  md:w-full pb-5 pt-10 bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-xl">
@@ -19,10 +35,10 @@ export default function Header() {
           <HamburgerMenu />
           <Nav />
           <div className=" justify-center hidden md:block ">
-            {user._id !== "" ? (
+            {user._id !== "" || token  ? (
               <button
                 className="buttonNav"
-                onClick={() => dispatch(userActions.sign_out())}
+                onClick={handleSignOut}
               >
                 <svg
                   width="21"
@@ -61,6 +77,8 @@ export default function Header() {
                       fill="white"
                     />
                   </svg>
+
+                 
                   Sign In
                 </Link>
               </>
