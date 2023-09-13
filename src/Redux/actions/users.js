@@ -54,18 +54,19 @@ const authenticate = createAsyncThunk('authenticate', async ()=>{
 
 })
 
-const sign_out = createAsyncThunk( 'sign_out', async ()=>{
-        try {
-            await axios.post("http://localhost:3000/api/user/logout")
-            .then((response) => {
-                    localStorage.removeItem("token");
-                
-                console.log(response)})
+export const sign_out = createAsyncThunk('sign_out', async (_, thunkAPI) => {
+  try {
+    // Perform the asynchronous operation (e.g., remove the token from localStorage)
+    localStorage.removeItem('token');
 
-        } catch (error) {
-            console.log(error.message);
-        }
-})
+    // Return a response or data you want to include in the action
+    return null;
+  } catch (error) {
+    // Handle any errors here
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
 const sign_up = createAsyncThunk('sign_up', async (body, { rejectWithValue }) => {
   try {
     const response = await axios.post("http://localhost:3000/api/user/register", body);

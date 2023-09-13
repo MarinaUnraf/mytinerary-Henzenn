@@ -16,9 +16,10 @@ function SignIn() {
       event.preventDefault();
        const email = emailInputRef.current.value;
         const password = passInputRef.current.value;
-        dispatch(userActions.sign_in({email, password}))
+        
        try {
       await dispatch(userActions.sign_in({ email, password }));
+        alert('Succesfully logged in')
       // Authentication successful, handle redirection or other actions
     } catch (error) {
       // Handle authentication error
@@ -91,11 +92,12 @@ function SignIn() {
               </svg>
               <input
                 className="pl-2 outline-none border-none"
-                type="text"
+                type="email"
                 name="email"
                 id=""
                 placeholder="Email Address"
                 ref={emailInputRef}
+                required
               />
             </div>
             <div className="flex items-center border-2 py-2 px-3 rounded-2xl">
@@ -118,6 +120,7 @@ function SignIn() {
                 id=""
                 placeholder="Password"
                 ref={passInputRef}
+                required 
               />
             </div>
             <button

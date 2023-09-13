@@ -32,7 +32,10 @@ function App() {
 
   useEffect(()=>{
     
-    dispatch(userActions.authenticate());
+     const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(userActions.authenticate());
+    }
 
   },[])
   
